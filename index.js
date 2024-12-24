@@ -8,9 +8,9 @@ const PORT = 3200;
 const NITRO_API_URL = 'https://api.explorer.routernitro.com/graphql';
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Frontend URL
+  origin: '*', // Frontend URL
   methods: ['GET', 'POST'], // Allowed HTTP methods
-  credentials: true, // Allow cookies and headers
+  // credentials: true, // Allow cookies and headers
 };
 
 app.use(cors(corsOptions));

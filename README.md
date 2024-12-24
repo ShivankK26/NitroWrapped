@@ -18,3 +18,5 @@ Your entire transaction story, wrapped up!
 + in the address bar, type URL with ```/nitro-wrapped/WALLET-ADDRESS```
 + in client-side run: ```npm start```
 + now open `http://localhost:3000/`
++ to test backend: http://localhost:3200/nitro-wrapped/<WALLET-ADDRESS>
++ input the user wallet address and enjoy Nitro Wrapped!

@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
-  const BACKEND_API_URL = 'https://3200-hashfx-nitrowrapped-j7sp7hql4vg.ws-us117.gitpod.io/nitro-wrapped';
+  const BACKEND_API_URL = 'http://localhost:3200/nitro-wrapped';
 
   const handleSearch = async () => {
     if (!walletAddress) {

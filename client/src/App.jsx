@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Pie } from "react-chartjs-2";
-import "chart.js/auto";
 
 function App() {
   const [walletAddress, setWalletAddress] = useState("");
@@ -26,116 +24,85 @@ function App() {
     }
     setLoading(false);
   };
-
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
-      <h1 className="text-5xl font-extrabold mb-8">Nitro Wrapped</h1>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      <h1 className="text-4xl font-bold mb-8">Nitro Wrapped</h1>
       <div className="w-full max-w-md">
         <input
           type="text"
           placeholder="Enter Wallet Address"
           value={walletAddress}
           onChange={(e) => setWalletAddress(e.target.value)}
-          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <button
           onClick={handleSearch}
-          className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+          className="mt-4 w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition"
         >
           {loading ? "Loading..." : "Search"}
         </button>
       </div>
       {error && <p className="mt-4 text-red-500">{error}</p>}
       {data && (
-        <div className="mt-8 bg-gray-800 shadow-lg rounded-lg p-6 w-full max-w-4xl">
-          <h2 className="text-3xl font-bold mb-6">Wallet Summary</h2>
-
-          {/* Digital Clock Style Display for Total Tokens Sent */}
-          <div className="flex justify-between items-center mb-8">
-            <div className="bg-black text-green-400 font-digital text-6xl p-4 rounded-lg shadow-md">
-              {data.totalTokensSent ? data.totalTokensSent.toFixed(2) : '0.00'}
-            </div>
-            <p className="text-lg">Total Tokens Sent</p>
-          </div>
-
-          {/* Pie Chart for Token Usage */}
-          {data.tokenUsage && (
-            <div className="mb-8">
-              <h3 className="text-2xl font-semibold mb-4">Token Usage</h3>
-              <div style={{ width: '300px', height: '300px', margin: '0 auto' }}>
-                <Pie
-                  data={{
-                    labels: Object.keys(data.tokenUsage),
-                    datasets: [
-                      {
-                        data: Object.values(data.tokenUsage),
-                        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"],
-                      },
-                    ],
-                  }}
-                  options={{ maintainAspectRatio: false }}
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Progress Bar for Sent and Received Tokens */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold mb-4">Tokens Sent vs Received</h3>
-            <div className="w-full bg-gray-700 rounded-full h-6 overflow-hidden">
-              <div
-                className="bg-green-500 h-6"
-                style={{ width: `${(data.totalTokensReceived / (data.totalTokensReceived + data.totalTokensSent)) * 50 || 0}%` }}
-              ></div>
-              <div
-                className="bg-red-500 h-6"
-                style={{ width: `${(data.totalTokensSent / (data.totalTokensReceived + data.totalTokensSent)) * 50 || 0}%` }}
-              ></div>
-            </div>
-          </div>
-
-          {/* Highest Transaction Fee */}
-          {data.highestFeeTransaction && (
-            <div className="mb-8">
-              <h3 className="text-2xl font-semibold mb-4">Highest Fee Transaction</h3>
-              <p>
-                Fee: {data.highestFeeTransaction.feeAmount} {data.highestFeeTransaction.feeToken}
-              </p>
-              <p>
-                <a
-                  href={`https://explorer.etherscan.io/tx/${data.highestFeeTransaction.transactionHash}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:underline"
-                >
-                  {data.highestFeeTransaction.transactionHash}
-                </a>
-              </p>
-            </div>
-          )}
-
-          {/* Transaction Time Metrics */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold mb-4">Transaction Times</h3>
-            <div className="grid grid-cols-4 gap-4">
-              <div className="bg-gray-700 p-4 rounded-lg text-center">
-                <p className="text-lg">Total Time</p>
-                <p className="text-2xl font-bold">{data.totalTransactionTime || 0}s</p>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg text-center">
-                <p className="text-lg">Average Time</p>
-                <p className="text-2xl font-bold">{data.averageTransactionTime || 0}s</p>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg text-center">
-                <p className="text-lg">Max Time</p>
-                <p className="text-2xl font-bold">{data.maxTransactionTime || 0}s</p>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg text-center">
-                <p className="text-lg">Min Time</p>
-                <p className="text-2xl font-bold">{data.minTransactionTime || 0}s</p>
-              </div>
-            </div>
-          </div>
+        <div className="mt-8 bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
+          <h2 className="text-2xl font-bold mb-4">Wallet Summary</h2>
+          <ul className="space-y-2">
+            <li>
+              <strong>Total Transactions:</strong> {data.totalTransactions || 0}
+            </li>
+            <li>
+              <strong>Total Gas Fee Paid:</strong> {data.totalGasFeePaid ? data.totalGasFeePaid.toFixed(2) : '0.00'} USD
+            </li>
+            <li>
+              <strong>Total Unique Tokens Sent:</strong> {data.totalUniqueTokensSent || 0}
+            </li>
+            <li>
+              <strong>Total Unique Tokens Received:</strong> {data.totalUniqueTokensReceived || 0}
+            </li>
+            <li>
+              <strong>Total Tokens Sent:</strong> {data.totalTokensSent ? data.totalTokensSent.toFixed(2) : '0.00'}
+            </li>
+            <li>
+              <strong>Total Tokens Received:</strong> {data.totalTokensReceived ? data.totalTokensReceived.toFixed(2) : '0.00'}
+            </li>
+            <li>
+              <strong>Token Usage:</strong>
+              {data.tokenUsage && Object.entries(data.tokenUsage).map(([token, count]) => (
+                <div key={token}>
+                  {token}: {count}
+                </div>
+              ))}
+            </li>
+            <li>
+              <strong>Highest Fee Transaction:</strong>
+              {data.highestFeeTransaction ? `${data.highestFeeTransaction.feeAmount} ${data.highestFeeTransaction.feeToken} (Hash: ${data.highestFeeTransaction.transactionHash})` : 'N/A'}
+            </li>
+            <li>
+              <strong>Total Transaction Time:</strong> {data.totalTransactionTime || 0} seconds
+            </li>
+            <li>
+              <strong>Max Transaction Time:</strong> {data.maxTransactionTime || 0} seconds
+            </li>
+            <li>
+              <strong>Top Source Chain:</strong>
+              {data.topSourceChainCount
+                ? `${data.topSourceChainCount.chain} (${data.topSourceChainCount.count})`
+                : 'N/A'}
+            </li>
+            <li>
+              <strong>Top Destination Chain:</strong>
+              {data.topDestinationChainCount
+                ? `${data.topDestinationChainCount.chain} (${data.topDestinationChainCount.count})`
+                : 'N/A'}
+            </li>
+            <li>
+              <strong>Most Used Token:</strong>
+              {data.mostUsedToken ? `${data.mostUsedToken.name} (${data.mostUsedToken.count})` : 'N/A'}
+            </li>
+            <li>
+              <strong>Average Transaction Time:</strong> {data.averageTransactionTime || 0} seconds
+            </li>
+          </ul>
         </div>
       )}
     </div>

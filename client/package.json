@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "proxy": "http://localhost:3200",
+  "proxy": "https://nitro-wrapped.vercel.app/api/nitro-wrapped/0xb0907C946D75620d3219E94569D6FCB5dB09D64B",
   "dependencies": {
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",

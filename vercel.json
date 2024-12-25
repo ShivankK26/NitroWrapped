@@ -1,8 +1,26 @@
 {
-    "rewrites": [
+    "version": 2,
+    "builds": [
         {
-            "source": "/api/(.*)",
-            "destination": "/api/nitro-wrapped.js"
+            "src": "api/nitro-wrapped.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "client/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/nitro-wrapped/(.*)",
+            "dest": "/api/nitro-wrapped.js?walletAddress=$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "client/build/$1"
         }
     ]
 }

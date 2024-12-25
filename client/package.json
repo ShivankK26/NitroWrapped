@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:3200",
   "dependencies": {
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",

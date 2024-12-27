@@ -9,7 +9,7 @@
             "src": "client/package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "./dist"
+                "distDir": "dist"
             }
         }
     ],
@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "/client/dist/index.html"
+            "dest": "./dist/$1"
         }
     ]
 }

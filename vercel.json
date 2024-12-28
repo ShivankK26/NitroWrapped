@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "/api/nitro-wrapped.js",
+            "src": "api/nitro-wrapped.js",
             "use": "@vercel/node"
         },
         {

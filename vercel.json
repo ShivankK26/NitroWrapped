@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/nitro-wrapped.js",
+            "src": "/api/nitro-wrapped.js",
             "use": "@vercel/node"
         },
         {
@@ -19,12 +19,8 @@
             "dest": "/api/nitro-wrapped.js"
         },
         {
-            "src": "/api/nitro-wrapped/(.*)",
-            "dest": "/api/nitro-wrapped.js?walletAddress=$1"
-        },
-        {
             "src": "/(.*)",
-            "dest": "/dist/$1"
+            "dest": "dist/$1"
         }
     ]
 }

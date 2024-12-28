@@ -14,9 +14,5 @@ Your entire transaction story, wrapped up!
 |Framework|ExpressJS|
 
 ### Walkthrough
-+ run the app at root directory: ```node index.js```
-+ in the address bar, type URL with ```/nitro-wrapped/WALLET-ADDRESS```
-+ in client-side run: ```npm start```
-+ now open `http://localhost:3000/`
-+ to test backend: http://localhost:3200/nitro-wrapped/<WALLET-ADDRESS>
++ visit https://nitro-wrapped.vercel.app/
 + input the user wallet address and enjoy Nitro Wrapped!

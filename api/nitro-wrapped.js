@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from "axios";
 
 const NITRO_API_URL = 'https://api.explorer.routernitro.com/graphql';
 
@@ -10,6 +10,7 @@ async function queryGraphQL(query, variables) {
         });
         return response.data.data;
     } catch (error) {
+        console.log(response)
         throw new Error('Failed to fetch data from Nitro API');
     }
 }

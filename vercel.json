@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/nitro-wrapped.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/nitro-wrapped",
+            "dest": "/api/nitro-wrapped.js"
+        },
+        {
+            "src": "/api/nitro-wrapped/(.*)",
+            "dest": "/api/nitro-wrapped.js?walletAddress=$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/dist/$1"
+        }
+    ]
+}

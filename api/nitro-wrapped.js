@@ -10,8 +10,6 @@ async function queryGraphQL(query, variables) {
         });
         return response.data.data;
     } catch (error) {
-        console.log(`response: ${response}\n`)
-        console.log(`error: ${error}\n`)
         throw new Error('Failed to fetch data from Nitro API');
     }
 }

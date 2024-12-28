@@ -15,7 +15,7 @@
     ],
     "routes": [
         {
-            "src": "/api/nitro-wrapped/(.*)",
+            "src": "/api/nitro-wrapped",
             "dest": "/api/nitro-wrapped.js"
         },
         {
@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "dist/$1"
+            "dest": "/dist/$1"
         }
     ]
 }

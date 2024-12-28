@@ -15,8 +15,8 @@
     ],
     "routes": [
         {
-            "src": "/api/nitro-wrapped",
-            "dest": "/api/nitro-wrapped.js"
+            "src": "/api/nitro-wrapped/(.*)",
+            "dest": "/api/nitro-wrapped.js?walletAddress=$1"
         },
         {
             "src": "/(.*)",

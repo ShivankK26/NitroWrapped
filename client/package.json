@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "proxy": "https://nitro-wrapped.vercel.app/api/nitro-wrapped/0xb0907C946D75620d3219E94569D6FCB5dB09D64B",
   "dependencies": {
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",
@@ -30,6 +29,6 @@
     "globals": "^15.14.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "vite": "^6.0.5"
+    "vite": "^6.0.6"
   }
 }
